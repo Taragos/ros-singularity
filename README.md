@@ -14,16 +14,16 @@ sudo singularity build <name>.simg Singularity.<distro>
 ## Personal Recommendation
 
 My images all follow the pattern: ros-\<distro\> and are moved to a folder in my home directory.  
-This makes it possible to use the following bash functions for autocompletion and quick start of the container from anywhere, without interfering with any other singularity images:
+This makes it possible to use the following bash functions a quick start of the container from anywhere and autocompletion of this command.
 
-Quickstart a Container from anywhere:
+**Quickstart a Container from anywhere:**
 ```bash
 ros() {
   singularity shell ~/<singularity-image-folder>/ros-$1.simg -c "source /opt/ros/$1/setup.bash"
 }
 ```
 
-Enable Autocompletion for the image names:
+**Enable Autocompletion for the image names:**
 ```bash
 _ros() {
   local cur=${COMP_WORDS[COMP_CWORD]}
