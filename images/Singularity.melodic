@@ -1,0 +1,24 @@
+Bootstrap: docker
+
+From: ubuntu:18.04
+
+%post
+  apt-get -y update
+  apt-get -y upgrade
+  apt-get -y install lsb-release gnupg2
+  sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+  apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+  apt-get -y update
+  DEBIAN_FRONTEND=noninteractive /usr/bin/apt-get install -y -q --force-yes ros-melodic-desktop-full
+
+%environment
+  export ROS_ROOT=/opt/ros/melodic/share/ros
+  export ROS_PACKAGE_PATH=/opt/ros/melodic/share:/opt/ros/melodic/stacks
+  export ROS_MASTER_URI=http://localhost:11311
+  export LD_LIBRARY_PATH=/opt/ros/melodic/lib:/.singularity.d/libs
+  export CPATH=/opt/ros/melodic/include
+  export PATH=/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  export PYTHONPATH=/opt/ros/melodic/lib/python2.7/dist-packages
+  export PKG_CONFIG_PATH=/opt/ros/melodic/lib/pkgconfig
+  export CMAKE_PREFIX_PATH=/opt/ros/melodic
+  export ROS_ETC_DIR=/opt/ros/melodic/etc/ros
