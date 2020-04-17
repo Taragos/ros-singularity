@@ -1,5 +1,7 @@
 # ros-singularity
 Setup for ROS in a Singularity Container
+As Singularity is mainly developed and tested for Linux Distributions or Mac OS, I highly recommend using these images on such an OS.
+The usage of these images in a container would add an unnecessary layer and could impact the performance of the whole setup.
 
 ## Installation
 
