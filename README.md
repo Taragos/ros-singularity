@@ -17,6 +17,7 @@ My images all follow the pattern: ros-\<distro\> and are moved to a folder in my
 This makes it possible to use the following bash functions a quick start of the container from anywhere and autocompletion of this command.
 
 **Quickstart a Container from anywhere:**
+
 ```bash
 ros() {
   singularity shell ~/<singularity-image-folder>/ros-$1.simg -c "source /opt/ros/$1/setup.bash"
@@ -24,6 +25,7 @@ ros() {
 ```
 
 **Enable Autocompletion for the image names:**
+
 ```bash
 _ros() {
   local cur=${COMP_WORDS[COMP_CWORD]}
