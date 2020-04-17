@@ -10,6 +10,8 @@ From: ubuntu:16.04
   apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
   apt-get -y update
   apt-get -y install ros-kinetic-desktop-full
+  apt-get -y update
+  apt-get -y install python-catkin-tools
 
 %environment
   export ROS_ROOT=/opt/ros/kinetic/share/ros
