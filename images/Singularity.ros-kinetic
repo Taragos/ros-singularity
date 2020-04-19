@@ -1,26 +1,12 @@
 Bootstrap: docker
 
-From: ubuntu:16.04
+From: ros:kinetic-ros-core
 
 %post
   apt-get -y update
   apt-get -y upgrade
-  apt-get -y install lsb-release
-  sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-  apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-  apt-get -y update
-  apt-get -y install ros-kinetic-desktop-full
-  apt-get -y update
   apt-get -y install python-catkin-tools
+  apt-get -y install ros-kinetic-husky-simulator
 
 %environment
-  export ROS_ROOT=/opt/ros/kinetic/share/ros
-  export ROS_PACKAGE_PATH=/opt/ros/kinetic/share:/opt/ros/kinetic/stacks
-  export ROS_MASTER_URI=http://localhost:11311
-  export LD_LIBRARY_PATH=/opt/ros/kinetic/lib:/.singularity.d/libs
-  export CPATH=/opt/ros/kinetic/include
-  export PATH=/opt/ros/kinetic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-  export PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages
-  export PKG_CONFIG_PATH=/opt/ros/kinetic/lib/pkgconfig
-  export CMAKE_PREFIX_PATH=/opt/ros/kinetic
-  export ROS_ETC_DIR=/opt/ros/kinetic/etc/ros
+  export HUSKY_GAZEBO_DESCRIPTION=$(rospack find husky_gazebo)/urdf/description.gazebo.xacro
