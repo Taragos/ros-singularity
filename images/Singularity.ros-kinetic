@@ -9,4 +9,5 @@ From: ros:kinetic-ros-core
   apt-get -y install ros-kinetic-husky-simulator
 
 %environment
+  source /opt/ros/kinetic/setup.bash
   export HUSKY_GAZEBO_DESCRIPTION=$(rospack find husky_gazebo)/urdf/description.gazebo.xacro
